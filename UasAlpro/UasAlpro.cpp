@@ -36,9 +36,9 @@ brg lok[5];
 
 brg temp;
 
-int n, i, b, cari, ada;
+int n, i, b, cari, ada, bln, menu;
 int jumlahRekursif(int x, int a){
-    cout << "Berapa jumlah pengunjung: ";
+    cout << "Berapa jumlah penjualan: ";
     cin >> a;
     if (x==0){
         return a;
@@ -57,9 +57,28 @@ int main()
 
 	cout << "\t\t" << "==================================================================================" << endl;
 
-	cout << "\t\t" << "|                                  KELOMPOK 4                                    |" << endl;
+	cout << "\t\t" << "|                                  KELOMPOK 4                                     |" << endl;
 
 	cout << "\t\t" << "==================================================================================" << endl << endl;
+
+	cout << "\t\t" << "|                                     MENU                                        |" << endl;
+	
+	cout << "\t\t" << "| 1. Input Data                            								       |" << endl;
+	cout << "\t\t" << "| 2. Searching Barang                    						               |" << endl;
+	cout << "\t\t" << "| 3. Input Data penjualan Barang        				                           |" << endl;
+	cout << "\t\t" << "| Pilih Menu                           							               |" ;
+	cin >> menu << endl;
+
+	swicth (menu){
+		case 1:
+			cout<< inputd;
+			break;
+		
+		case 2:
+			cout<< search;
+			break;
+			
+	}
 
 	cout << "\t\t\t\t\t\t" << "Masukan banyak data = ";
 
@@ -223,8 +242,10 @@ int main()
 
 	}
 	
+	cout << "Input data Penjualan";
     cout << "Masukkan berapa bulan: ";
-    if(cari>0){
+	cin >> bln;
+    if(bln>0){
         cout << jumlahRekursif(cari-1, 0);
     }else{
         return 0;

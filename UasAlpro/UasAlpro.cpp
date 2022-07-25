@@ -98,7 +98,7 @@ int masuk_data()
 			cout << "\t\t\t\t\t\t" << "Input Kode Barang : "; cin >> barang[i].kode;
 			cin.ignore();
 				indata << barang[i].kode<<endl;
-			cout << "\t\t\t\t\t\t" << "Input Nama Barang: "; cin.getline (barang[i].nama, 100);
+			cout << "\t\t\t\t\t\t" << "Input Nama Barang: "; cin.get (barang[i].nama, 100);
 			indata<<barang[i].nama<<endl;
 			
 			cout << "\t\t\t\t\t\t" << "Input Stock Barang : "; cin >> barang[i].stock;
@@ -180,12 +180,6 @@ int masuk_data()
 			}
 	
 		}
-	
-		cout << endl;
-	
-	
-	
-	
 	
 		cout << endl;
 	
@@ -312,12 +306,12 @@ int main()
 			break;
 			
 		case 3:
-				cout << "Input data Penjualan";
+				cout << "Input data Penjualan"<<endl;
    				 cout << "Masukkan berapa bulan: ";
 				cin >> bln;
    				 if(bln>0)
 					{
-    			    cout << "Jumlahnya : "<<"\t\t\t" <<jumlahRekursif(bln-1, 0);
+    			    cout << "Jumlahnya : "<<"\t\t\t" <<jumlahRekursif(bln-1, 0)<<endl;
    					}
 					else
 					{
@@ -352,7 +346,7 @@ int main()
 						return 0;
 					}
 			break;
-}
+	}	
 }
 
 

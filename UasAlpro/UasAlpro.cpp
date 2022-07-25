@@ -97,7 +97,7 @@ int main()
 
 
 
-		cout << "\t\t\t" << "|       " << barang[b].kode << "\t\t" << barang[b].nama << "\t\t " << barang[b].stock << "\t\t " << barang[b].lokasi << "     |" << endl;
+		cout << "\t\t\t" << "|       " << barang[i].kode << "\t\t" << barang[i].nama << "\t\t " << barang[i].stock << "\t\t " << barang[i].lokasi << "     |" << endl;
 
 	}
 
@@ -177,7 +177,7 @@ int main()
 
 
 
-
+	lgs:
 
 	cout << endl;
 
@@ -218,6 +218,8 @@ int main()
 	{
 
 		cout << "Data Tidak ditemukan" << endl;
+		
+		goto lgs;
 
 	}
 	

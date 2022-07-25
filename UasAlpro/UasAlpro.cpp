@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include <fstream>
+
 #include <conio.h>
 
 #include <stdio.h>
@@ -37,6 +39,37 @@ brg lok[5];
 brg temp;
 
 int n, i, b, cari, ada, bln, menu;
+
+int tampilkandata()
+{
+
+	
+
+	
+	cout << "\t\t\t" << "Data Barang Anda" << endl;
+	
+		cout << "\t\t\t" << "===================================================================" << endl;
+	
+		cout << "\t\t\t" << "|   Kode Barang  |  Nama Barang  | Stock Barang |  Lokasi Barang  |" << endl;
+	
+		cout << "\t\t\t" << "===================================================================" << endl;
+	
+			for (b = 0; b < n; b++) {
+	
+			cout << "\t\t\t" << "|      " << barang[b].kode << "\t\t" << barang[b].nama << "\t\t" << barang[b].stock << "\t\t" << barang[b].lokasi << "       |" << endl;
+	
+		}
+	
+		cout << "\t\t\t" << "====================================================================" << endl;
+		
+	
+		cout << endl;
+	
+		cout << "\t\t\t" << "===================================================================" << endl;
+	
+	
+}
+
 int jumlahRekursif(int x, int a){
     cout << "Berapa jumlah penjualan: ";
     cin >> a;
@@ -48,6 +81,9 @@ int jumlahRekursif(int x, int a){
 }
 int masuk_data()
 	{
+	ofstream indata;
+	indata.open("data_barang.dat");
+	
 		cout << "\t\t\t\t\t\t" << "Masukan banyak data = ";
 
 		cin >> n;
@@ -57,14 +93,21 @@ int masuk_data()
 			cout << endl;
 	
 			cout << "\t\t\t\t\t\t" << "Data ke-" << (i + 1) << ":" << endl;
-	
+			
+					
 			cout << "\t\t\t\t\t\t" << "Input Kode Barang : "; cin >> barang[i].kode;
-	
-			cout << "\t\t\t\t\t\t" << "Input Nama Barang: "; cin >> gets(barang[i].nama);
-	
+			cin.ignore();
+				indata << barang[i].kode<<endl;
+			cout << "\t\t\t\t\t\t" << "Input Nama Barang: "; cin.getline (barang[i].nama, 100);
+			indata<<barang[i].nama<<endl;
+			
 			cout << "\t\t\t\t\t\t" << "Input Stock Barang : "; cin >> barang[i].stock;
-	
-			cout << "\t\t\t\t\t\t" << "Katalog : "; cin >> gets(barang[i].lokasi);
+			cin.ignore();
+			indata << barang[i].stock<<endl;
+			cout << "\t\t\t\t\t\t" << "Katalog : "; cin.getline (barang[i].lokasi, 100);
+			indata<<barang[i].lokasi<<endl;
+			indata.close();
+		
 	
 			cout << endl;
 	
@@ -91,6 +134,8 @@ int masuk_data()
 		cout << endl;
 	
 		cout << "\t\t\t" << "===================================================================" << endl;
+		
+		
 	
 		for (i = 0; i < n; i++) {
 	
@@ -145,7 +190,6 @@ int masuk_data()
 		cout << endl;
 	
 	
-	
 		cout << "\t\t\t" << "Setelah data diurutkan berdasarkan kode terkecil : " << endl;
 	
 		cout << "\t\t\t" << "====================================================================" << endl;
@@ -161,6 +205,8 @@ int masuk_data()
 		}
 	
 		cout << "\t\t\t" << "====================================================================" << endl;
+		
+		
 	}
 	
 int search()
@@ -215,7 +261,7 @@ int search()
 int main()
 
 {
-
+	menuu:
 	cout << "\t\t" << "==================================================================================" << endl;
 
 	cout << "\t\t" << "|                     DATA PENJUALAN PLN MOBILE RB BLITAR                        |" << endl;
@@ -226,7 +272,8 @@ int main()
 	cout << "\t\t" << "|                                     MENU                                       |" << endl;
 	cout << "\t\t" << "| 1. Input Data								   	 |" << endl;
 	cout << "\t\t" << "| 2. Searching Barang						  		 |" << endl;
-	cout << "\t\t" << "| 3. Input Data penjualan Barang				  		 |" << endl;
+	cout << "\t\t" << "| 3. Menjumlah Penjualan Perbulan					   	 |" << endl;
+	cout << "\t\t" << "| 4. Lihat Data							  		 |" << endl;
 	cout << "\t\t" << "==================================================================================" << endl;
 	cout << "\t\t" << "Pilih Menu : " ;
 	cin >> menu;
@@ -234,29 +281,78 @@ int main()
 	switch (menu){
 		case 1:
 			cout<< masuk_data();
+			getch;
+			char plh;
+			cout << " kembali ke menu [y|t]";
+					cin >> plh;
+					if (plh == 'Y' || plh =='y')
+					{
+						goto menuu;	
+					}
+					else
+					{
+						return 0;
+					}
 			break;
+			
 		
 		case 2:
 			cout<< search();
+			
+			cout << " kembali ke menu [y|t]";
+					cin >> plh;
+					if (plh == 'Y' || plh =='y')
+					{
+						goto menuu;	
+					}
+					else
+					{
+						return 0;
+					}
 			break;
 			
-	}
-
-	
-
-
-
-	
-	
-	cout << "Input data Penjualan";
-    cout << "Masukkan berapa bulan: ";
-	cin >> bln;
-    if(bln>0){
-        cout << jumlahRekursif(cari-1, 0);
-    }else{
-        return 0;
-    }
-	getch();
+		case 3:
+				cout << "Input data Penjualan";
+   				 cout << "Masukkan berapa bulan: ";
+				cin >> bln;
+   				 if(bln>0)
+					{
+    			    cout << "Jumlahnya : "<<"\t\t\t" <<jumlahRekursif(bln-1, 0);
+   					}
+					else
+					{
+      				  return 0;
+   					 }
+				getch();
+				
+					cout << " kembali ke menu [y|t]";
+					cin >> plh;
+					if (plh == 'Y' || plh =='y')
+					{
+						goto menuu;	
+					}
+					else
+					{
+						return 0;
+					}
+				
+			
+		case 4:
+				cout<< tampilkandata();
+			getch;
+			
+			cout << " kembali ke menu [y|t] : ";
+					cin >> plh;
+					if (plh == 'Y' || plh =='y')
+					{
+						goto menuu;	
+					}
+					else
+					{
+						return 0;
+					}
+			break;
+}
 }
 
 
